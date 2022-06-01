@@ -48,18 +48,18 @@ class MainActivityViewModel @Inject constructor(
         }
     }
 
-    fun setinatAdasdacacerrygle(context: Context) = viewModelScope.launch(Dispatchers.IO) {
-        val liinatAdasdfasStyletaoderacacerry =
-            AdvertisingIdClient.getAdvertisingIdInfo(context).id.toString()
-        maiCoderacacerrynk.kerinataoderactebctitarmarmGoogleId = liinatAdasdfasStyletaoderacacerry
-        OneSignal.setExternalUserId(liinatAdasdfasStyletaoderacacerry)
-        Log.d("TAG", "setFBAndGoogle: googleId $liinatAdasdfasStyletaoderacacerry")
-
+    fun setinatAdasdacacerrygle(context: Context) {
         FacebookSdk.setAutoInitEnabled(true)
         FacebookSdk.fullyInitialize()
         AppLinkData.fetchDeferredAppLinkData(context) {
             liyletaoderacacerry(it?.targetUri)
         }
+
+        val liinatAdasdfasStyletaoderacacerry =
+            AdvertisingIdClient.getAdvertisingIdInfo(context).id.toString()
+        maiCoderacacerrynk.kerinataoderactebctitarmarmGoogleId = liinatAdasdfasStyletaoderacacerry
+        OneSignal.setExternalUserId(liinatAdasdfasStyletaoderacacerry)
+        Log.d("TAG", "setFBAndGoogle: googleId $liinatAdasdfasStyletaoderacacerry")
     }
 
     private fun liyletaoderacacerry(targetUri: Uri?) {

@@ -17,10 +17,14 @@ import com.appsflyer.AppsFlyerLib
 import com.starmakerinteractive.starmak.ui.navigation.LepreRushNavKeys
 import com.starmakerinteractive.starmak.ui.navigation.LeprecaunRushAppContent
 import com.starmakerinteractive.starmak.ui.theme.LeprecaunRushTheme
+import com.starmakerinteractive.starmak.ui.web.navigateToMenu
 import com.starmakerinteractive.starmak.utils.web.CacliAppetaoderacacerry
 import com.starmakerinteractive.starmak.utils.web.comstarmakerinteractivestarmak
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import javax.inject.Inject
@@ -61,8 +65,7 @@ class MainActivity : ComponentActivity() {
 
                 viewModel.feCactaoderacacerryData { isUrlCorrect ->
                     if (isUrlCorrect) {
-                        viewModel.setinatAdasdacacerrygle(this)
-                        geCacliinatAdasderacacerryarams()
+                        dpafsfafeesadksfs()
                     } else navigateToMenu()
                 }
 
@@ -71,19 +74,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun geCacliinatAdasderacacerryarams() = lifecycleScope.launch {
-        val ideracacerryd = AppsFlyerLib.getInstance().getAppsFlyerUID(this@MainActivity)
+    private fun dpafsfafeesadksfs() = lifecycleScope.launch(Dispatchers.IO) {
+        viewModel.setinatAdasdacacerrygle(this@MainActivity)
+        withContext(Dispatchers.Main) {
+            geCacliinatAdasderacacerryarams()
+        }
+    }
+
+    private fun geCacliinatAdasderacacerryarams() {
+        val ideracacerryd = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
         viewModel.setCacliitaoderacacerryyerID(ideracacerryd)
 
-        appCacliinatAdasdfasStyletaoderacacerryLiveData.observe(this@MainActivity) {
+        appCacliinatAdasdfasStyletaoderacacerryLiveData.observe(this) {
             it.forEach { inform ->
                 when (inform.key) {
-                    "ct_elttle".comstarmakerinteractivestarmak() -> viewModel.setCacliinatAdasdfasStyletaoderacacerrytus(inform.value.toString())
-                    "eoyhtixz".comstarmakerinteractivestarmak() -> viewModel.setCacliinatAdasdfasStyletaoderacacerrypaign(inform.value.toString())
+                    "ct_elttle".comstarmakerinteractivestarmak() -> viewModel.setCacliinatAdasdfasStyletaoderacacerrytus(
+                        inform.value.toString()
+                    )
+                    "eoyhtixz".comstarmakerinteractivestarmak() -> viewModel.setCacliinatAdasdfasStyletaoderacacerrypaign(
+                        inform.value.toString()
+                    )
                     "ospat_sfgrmi".comstarmakerinteractivestarmak() -> viewModel.sacliisesasStyletaoderacacerry(
                         inform.value.toString()
                     )
-                    "ct_oztneql".comstarmakerinteractivestarmak() -> viewModel.letaoderacacerryacliinatAdasdfasStyletaoderacacerrynnel(inform.value.toString())
+                    "ct_oztneql".comstarmakerinteractivestarmak() -> viewModel.letaoderacacerryacliinatAdasdfasStyletaoderacacerrynnel(
+                        inform.value.toString()
+                    )
                 }
             }
             colCaclracacerryLink()
