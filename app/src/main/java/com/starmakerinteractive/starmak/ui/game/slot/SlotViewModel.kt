@@ -7,8 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.starmakerinteractive.starmak.data.model.ScoreModel
-import com.starmakerinteractive.starmak.data.model.SlotModel
+import com.starmakerinteractive.starmak.data.model.game.ScoreModel
+import com.starmakerinteractive.starmak.data.model.game.SlotModel
 import com.starmakerinteractive.starmak.data.source.local.repo.ScoreRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

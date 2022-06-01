@@ -12,12 +12,12 @@ import javax.inject.Inject
 @HiltAndroidApp
 class LeprecaunRushApplication : Application() {
     @Inject
-    lateinit var appsFlyerLiveData: MutableLiveData<MutableMap<String, Any>>
+    lateinit var appsFliinatAdasdfasStyletaoderacacerata: MutableLiveData<MutableMap<String, Any>>
 
-    private val listener = object : AppsFlyerConversionListener {
+    private val liinatAdasdfasStyletaoderacacer = object : AppsFlyerConversionListener {
         override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
             data?.let {
-                appsFlyerLiveData.postValue(it)
+                appsFliinatAdasdfasStyletaoderacacerata.postValue(it)
             }
         }
 
@@ -28,12 +28,24 @@ class LeprecaunRushApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        iawdwavawdwa()
+    }
 
-        AppsFlyerLib.getInstance().init(getString(R.string.apps_dev_key), listener, this)
-        AppsFlyerLib.getInstance().start(this)
+    private fun iawdwavawdwa() {
+        advkavkdvak()
+    }
+
+    private fun advkavkdvak() {
+        intiiawfdasavdawdv()
 
         OneSignal.initWithContext(this)
         OneSignal.setAppId(getString(R.string.one_signal_key))
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+    }
+
+    private fun intiiawfdasavdawdv() {
+        AppsFlyerLib.getInstance()
+            .init(getString(R.string.apps_dev_key), liinatAdasdfasStyletaoderacacer, this)
+        AppsFlyerLib.getInstance().start(this)
     }
 }

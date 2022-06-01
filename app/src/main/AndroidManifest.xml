@@ -17,14 +17,19 @@
         android:theme="@style/Theme.LeprecaunRush"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|screenSize"
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true">
         </activity>
 
         <meta-data
@@ -34,4 +39,5 @@
             android:name="com.facebook.sdk.ClientToken"
             android:value="@string/fb_at" />
     </application>
+
 </manifest>

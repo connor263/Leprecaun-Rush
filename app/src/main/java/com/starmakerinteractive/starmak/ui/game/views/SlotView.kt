@@ -10,16 +10,14 @@ import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.starmakerinteractive.starmak.ui.game.slot.SlotViewModel
@@ -36,10 +34,11 @@ import java.util.concurrent.TimeUnit
 @Composable
 fun SlotView(
     modifier: Modifier = Modifier,
+    stepWidth: Dp,
+    stepHeight: Dp,
     slotId: Int,
 ) {
     val viewModel: SlotViewModel = viewModel()
-    val context = LocalContext.current
     var currentState by remember { mutableStateOf(SlotScrollState.IDLE) }
     val transition = updateTransition(targetState = currentState, label = "")
 
@@ -62,19 +61,19 @@ fun SlotView(
         }) { state ->
         when (state) {
             SlotScrollState.IDLE -> 0.dp
-            SlotScrollState.SCROLL -> 50.dp
+            SlotScrollState.SCROLL -> stepWidth
         }
     }
 
     Box(
-        modifier = modifier.size(50.dp, 200.dp)
+        modifier = modifier.size(stepWidth, stepHeight * 5)
     ) {
         Crossfade(currentState, animationSpec = snap()) { state ->
             state
             Image(
                 modifier = Modifier
                     .offset(y = 0.dp - numberAnim)
-                    .size(50.dp)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (slotImage1.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)
@@ -90,8 +89,8 @@ fun SlotView(
             )
             Image(
                 modifier = Modifier
-                    .offset(y = 50.dp - numberAnim)
-                    .size(50.dp)
+                    .offset(y = stepWidth - numberAnim)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (slotImage2.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)
@@ -108,8 +107,8 @@ fun SlotView(
             )
             Image(
                 modifier = Modifier
-                    .offset(y = 100.dp - numberAnim)
-                    .size(50.dp)
+                    .offset(y = (stepWidth * 2) - numberAnim)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (slotImage3.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)
@@ -127,8 +126,8 @@ fun SlotView(
             )
             Image(
                 modifier = Modifier
-                    .offset(y = 150.dp - numberAnim)
-                    .size(50.dp)
+                    .offset(y = (stepWidth * 3) - numberAnim)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (slotImage4.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)
@@ -146,8 +145,8 @@ fun SlotView(
             )
             Image(
                 modifier = Modifier
-                    .offset(y = 200.dp - numberAnim)
-                    .size(50.dp)
+                    .offset(y = (stepWidth * 4) - numberAnim)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (slotImage5.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)
@@ -165,8 +164,8 @@ fun SlotView(
             )
             Image(
                 modifier = Modifier
-                    .offset(y = 250.dp - numberAnim)
-                    .size(50.dp)
+                    .offset(y = (stepWidth * 5) - numberAnim)
+                    .size(stepWidth, stepHeight)
                     .background(
                         if (nextSlotImage.isMatch) {
                             Color.Yellow.copy(alpha = 0.7F)

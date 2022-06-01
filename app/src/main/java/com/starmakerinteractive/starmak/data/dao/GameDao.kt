@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.starmakerinteractive.starmak.data.model.ScoreModel
+import com.starmakerinteractive.starmak.data.model.game.ScoreModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,8 +14,8 @@ interface GameDao {
     fun getScore(): Flow<ScoreModel>
 
     @Insert
-    suspend fun insertScore(scoreModel:ScoreModel)
+    suspend fun insertScore(scoreModel: ScoreModel)
 
     @Update
-    suspend fun updateScore(scoreModel:ScoreModel)
+    suspend fun updateScore(scoreModel: ScoreModel)
 }

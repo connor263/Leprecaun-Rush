@@ -1,7 +1,7 @@
 package com.starmakerinteractive.starmak.utils.game
 
 import com.starmakerinteractive.starmak.R
-import com.starmakerinteractive.starmak.data.model.SlotModel
+import com.starmakerinteractive.starmak.data.model.game.SlotModel
 
 const val SLOT_ANIMATION_DURATION = 100
 val randomSlots

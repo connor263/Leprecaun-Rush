@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import com.starmakerinteractive.starmak.MainActivity
 import com.starmakerinteractive.starmak.R
 import com.starmakerinteractive.starmak.ui.game.views.MenuButton
+import com.starmakerinteractive.starmak.ui.navigation.LepreRushNavKeys
 
 @Composable
 fun MenuScreen(navController: NavController, viewModel: MenuViewModel) {
@@ -53,7 +54,7 @@ fun MenuScreen(navController: NavController, viewModel: MenuViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MenuButton(text = "Start") {
-                navController.navigate("slot")
+                navController.navigate(LepreRushNavKeys.SlotScreen.route)
             }
             MenuButton(
                 text = "Score: ${scoreModel.value?.score ?: 0}",
@@ -80,7 +81,7 @@ fun MenuScreen(navController: NavController, viewModel: MenuViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MenuButton(text = "Leprecaun Wheel") {
-                navController.navigate("wheel")
+                navController.navigate(LepreRushNavKeys.WheelScreen.route)
             }
 
             MenuButton(text = "Exit") {

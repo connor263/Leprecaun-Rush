@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -95,7 +96,8 @@ fun WheelScreen(navController: NavController, viewModel: WheelViewModel) {
         MenuButton(
             modifier = Modifier
                 .weight(0.25F)
-                .padding(horizontal = 32.dp), text = "ROLL"
+                .padding(horizontal = 32.dp), text = "ROLL",
+            style = TextStyle(fontSize = 26.sp)
         ) {
             viewModel.rollWheel()
         }
@@ -104,7 +106,7 @@ fun WheelScreen(navController: NavController, viewModel: WheelViewModel) {
     LaunchedEffect(viewModel.wheel) {
         if (viewModel.wheel.isRotating) {
             wheelAnim.animateTo(
-                targetValue = wheelAnim.value - 360F + viewModel.wheel.degrees,
+                targetValue = (-1 * wheelAnim.value) + 90F + viewModel.wheel.degrees,
                 animationSpec = repeatable(
                     iterations = 20,
                     animation = tween(200),

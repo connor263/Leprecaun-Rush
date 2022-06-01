@@ -1,6 +1,6 @@
 package com.starmakerinteractive.starmak.interfaces
 
-import com.starmakerinteractive.starmak.data.model.ScoreModel
+import com.starmakerinteractive.starmak.data.model.game.ScoreModel
 import kotlinx.coroutines.flow.Flow
 
 interface ScoreRepository {

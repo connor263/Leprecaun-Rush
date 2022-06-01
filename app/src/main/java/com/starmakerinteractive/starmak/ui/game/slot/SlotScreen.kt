@@ -1,5 +1,6 @@
 package com.starmakerinteractive.starmak.ui.game.slot
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -20,10 +22,12 @@ import androidx.navigation.NavController
 import com.starmakerinteractive.starmak.R
 import com.starmakerinteractive.starmak.ui.game.views.BackButton
 import com.starmakerinteractive.starmak.ui.game.views.SlotBoard
+import com.starmakerinteractive.starmak.ui.navigation.LepreRushNavKeys
 
 @Composable
 fun SlotScreen(navController: NavController, viewModel: SlotViewModel) {
     val score = viewModel.score.collectAsState(initial = null)
+    val context = LocalContext.current
 
     Image(
         modifier = Modifier.fillMaxSize(),
@@ -43,15 +47,15 @@ fun SlotScreen(navController: NavController, viewModel: SlotViewModel) {
     ) {
         SlotBoard(
             modifier = Modifier
-                .weight(0.75F)
+                .weight(0.85F)
                 .padding(horizontal = 128.dp)
         )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .weight(0.25F)
-                .padding(vertical = 8.dp)
+                .weight(0.20F)
+                .padding(vertical = 4.dp)
         ) {
             Card(
                 modifier = Modifier
@@ -60,7 +64,7 @@ fun SlotScreen(navController: NavController, viewModel: SlotViewModel) {
                 backgroundColor = Color.Green.copy(red = 0.8F),
                 shape = RoundedCornerShape(16.dp)
             ) {
-                Row(modifier = Modifier.fillMaxWidth()) {
+                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     Column(
                         modifier = Modifier
                             .weight(0.75f)
@@ -71,31 +75,42 @@ fun SlotScreen(navController: NavController, viewModel: SlotViewModel) {
                         ) {
                             IconButton(onClick = { viewModel.increaseBet() }) {
                                 Icon(
+                                    modifier = Modifier.size(16.dp),
                                     imageVector = Icons.Rounded.Add,
                                     contentDescription = null
                                 )
                             }
                             IconButton(onClick = { viewModel.decreaseBet() }) {
                                 Icon(
+                                    modifier = Modifier.size(16.dp),
                                     imageVector = Icons.Rounded.Clear,
                                     contentDescription = null
                                 )
                             }
                             TextButton(onClick = { viewModel.maxBet() }) {
-                                Text("max", fontSize = 16.sp, color = Color.Black)
+                                Text("max", fontSize = 12.sp, color = Color.Black)
                             }
                         }
                         Row {
-                            Text("Score: ${score.value?.score ?: 0}", fontSize = 16.sp)
+                            Text("Score: ${score.value?.score ?: 0}", fontSize = 14.sp)
                             Spacer(modifier = Modifier.width(16.dp))
-                            Text("Bet: ${viewModel.currentBet}", fontSize = 16.sp)
+                            Text("Bet: ${viewModel.currentBet}", fontSize = 14.sp)
                             Spacer(modifier = Modifier.width(16.dp))
-                            Text("Last win: ${viewModel.lastWin}", fontSize = 16.sp)
+                            Text("Last win: ${viewModel.lastWin}", fontSize = 14.sp)
                         }
                     }
                     TextButton(
                         modifier = Modifier.weight(0.25f),
-                        onClick = { viewModel.rollSlots() },
+                        onClick = {
+                            if (viewModel.currentBet == 0) {
+                                Toast.makeText(context, "Make a bet", Toast.LENGTH_SHORT).show()
+                                if (score.value?.score == 0) {
+                                    navController.navigate(LepreRushNavKeys.WheelScreen.route)
+                                }
+                            } else {
+                                viewModel.rollSlots()
+                            }
+                        },
                     ) {
                         Text(
                             text = "ROLL",

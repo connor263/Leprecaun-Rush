@@ -17,14 +17,19 @@ object RoomModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application,callback:LeprecaunRushDatabase.Callback) = Room.databaseBuilder(
-        app,
-        LeprecaunRushDatabase::class.java,
-        "LeprecaunRushDatabase"
-    ).addCallback(callback)
-        .build()
+    fun provideDatabase(app: Application, callback: LeprecaunRushDatabase.Callback) =
+        Room.databaseBuilder(
+            app,
+            LeprecaunRushDatabase::class.java,
+            "LeprecaunRushDatabase"
+        ).addCallback(callback)
+            .build()
 
     @Provides
     @Singleton
     fun provideGameDao(db: LeprecaunRushDatabase) = db.getGameDao()
+
+    @Provides
+    @Singleton
+    fun proviinatinataoderaceracckDao(db: LeprecaunRushDatabase) = db.getCacheLinkDao()
 }

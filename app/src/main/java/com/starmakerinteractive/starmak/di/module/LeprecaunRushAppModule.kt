@@ -1,6 +1,8 @@
 package com.starmakerinteractive.starmak.di.module
 
 import androidx.lifecycle.MutableLiveData
+import com.starmakerinteractive.starmak.data.source.remote.LinkSinataoderacoderacice
+import com.starmakerinteractive.starmak.utils.web.comstarmakerinteractivestarmak
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,20 +16,20 @@ import javax.inject.Singleton
 object LeprecaunRushAppModule {
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
+    fun proviinataoderacrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("jhfhl://pretofzv.phq/iay/".comstarmakerinteractivestarmak())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideAppsFlyerLiveData() = MutableLiveData<MutableMap<String, Any>>()
+    fun provinataoderacrvice(retrofit: Retrofit): LinkSinataoderacoderacice =
+        retrofit.create(LinkSinataoderacoderacice::class.java)
 
-    /* @Provides
-     @Singleton
-     fun provideGistService():  {
-         return
-     }*/
+    @Provides
+    @Singleton
+    fun prinataoderacinataoderactaoderacerLiveData(): MutableLiveData<MutableMap<String, Any>> =
+        MutableLiveData<MutableMap<String, Any>>()
 }
