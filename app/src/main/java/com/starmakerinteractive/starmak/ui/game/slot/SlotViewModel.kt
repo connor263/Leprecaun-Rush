@@ -1,6 +1,5 @@
 package com.starmakerinteractive.starmak.ui.game.slot
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -21,27 +20,26 @@ class SlotViewModel @Inject constructor(
     private val scoreRepositoryImpl: ScoreRepositoryImpl
 ) : ViewModel() {
     private val listOfSlots = mutableStateMapOf<Int, List<SlotModel>>()
-    var isRoll by mutableStateOf(false)
+    var isPlaying by mutableStateOf(false)
 
     val score = scoreRepositoryImpl.getScore()
 
-    var currentBet by mutableStateOf(0)
+    var currentInvestment by mutableStateOf(0)
 
-    var lastWin by mutableStateOf(0)
+    var lastProfit by mutableStateOf(0)
 
-    fun rollSlots() {
-        if (!isRoll) {
-            isRoll = true
+    fun playSlots() {
+        if (!isPlaying) {
+            isPlaying = true
         }
     }
 
     fun updateSlots(slotId: Int, list: List<SlotModel>, initial: Boolean = false) {
-        Log.d("TAG", "updateSlots: $slotId")
-        isRoll = false
+        isPlaying = false
         listOfSlots.remove(slotId)
         listOfSlots[slotId] = list
 
-        if (!initial && slotId == 5 && currentBet != 0) {
+        if (!initial && slotId == 5 && currentInvestment != 0) {
             var matches = 0
             val lists = listOfSlots.values
 
@@ -63,32 +61,31 @@ class SlotViewModel @Inject constructor(
                     }
                 }
             }
-            Log.d("TAG", "updateSlots: $matches")
             if (matches != 0) saveScore(matches)
         }
     }
 
-    fun increaseBet() = viewModelScope.launch {
-        if (currentBet < score.first().score && !isRoll) {
-            currentBet += 50
+    fun increaseInvestment() = viewModelScope.launch {
+        if (currentInvestment < score.first().score && !isPlaying) {
+            currentInvestment += 50
         }
     }
 
-    fun decreaseBet() = viewModelScope.launch {
-        if (currentBet != 0 && !isRoll) {
-            currentBet -= 50
+    fun decreaseInvestment() = viewModelScope.launch {
+        if (currentInvestment != 0 && !isPlaying) {
+            currentInvestment -= 50
         }
     }
 
-    fun maxBet() = viewModelScope.launch {
-        if (!isRoll) {
-            currentBet = score.first().score
+    fun maxInvestment() = viewModelScope.launch {
+        if (!isPlaying) {
+            currentInvestment = score.first().score
         }
     }
 
     private fun saveScore(matches: Int) = viewModelScope.launch(Dispatchers.IO) {
         val newScore = score.first().score + (1000 * matches)
-        lastWin = newScore
+        lastProfit = newScore
         scoreRepositoryImpl.updateScore(ScoreModel(1, newScore))
     }
 }

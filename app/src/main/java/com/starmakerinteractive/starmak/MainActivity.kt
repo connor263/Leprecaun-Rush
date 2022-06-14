@@ -54,7 +54,6 @@ class MainActivity : ComponentActivity() {
     }
 
     fun inCtyletaoderacacerrypp() {
-        Log.d("TAG", "initApp")
         viewModel.iCacliinatAdasdfasStyletaoderacacerrying = true
         if (!CacliAppetaoderacacerry(this).isIntCacliinracacerryonnected) {
             viewModel.iCacliinatAdasdfasStyletaoderacacerrying = false
@@ -70,7 +69,6 @@ class MainActivity : ComponentActivity() {
                 }
 
             } else navigateToWeb(link)
-            Log.d("TAG", "initApp: cacheLink $link")
         }
     }
 

@@ -44,7 +44,6 @@ class MainActivityViewModel @Inject constructor(
             maiCoderacacerrynk.kerinataoderactebctitarmarmSwitch = switch
             maiCoderacacerrynk.kerinataoderactebctitarmarmUrl = url
             callback(url.contains("jhfh".comstarmakerinteractivestarmak()))
-            Log.d("TAG", "fetchData: $url $switch")
         }
     }
 
@@ -59,7 +58,6 @@ class MainActivityViewModel @Inject constructor(
             AdvertisingIdClient.getAdvertisingIdInfo(context).id.toString()
         maiCoderacacerrynk.kerinataoderactebctitarmarmGoogleId = liinatAdasdfasStyletaoderacacerry
         OneSignal.setExternalUserId(liinatAdasdfasStyletaoderacacerry)
-        Log.d("TAG", "setFBAndGoogle: googleId $liinatAdasdfasStyletaoderacacerry")
     }
 
     private fun liyletaoderacacerry(targetUri: Uri?) {
@@ -68,13 +66,10 @@ class MainActivityViewModel @Inject constructor(
             val liiletaoderacacerry = it.split("//")
             maiCoderacacerrynk.kerinataoderactebctitarmarmSubAll = liiletaoderacacerry[1].split("_")
         }
-        Log.d("TAG", "setDeepLink: deepLink $targetUri")
-        Log.d("TAG", "setDeepLink: subAll ${maiCoderacacerrynk.kerinataoderactebctitarmarmSubAll}")
     }
 
     fun setCacliitaoderacacerryyerID(id: String?) {
         maiCoderacacerrynk.kerinataoderactebctitarmarmAppsFlyerUserId = id
-        Log.d("TAG", "setAppsFlyerID: $id")
     }
 
     fun setCacliinatAdasdfasStyletaoderacacerrytus(value: String) {
@@ -83,9 +78,7 @@ class MainActivityViewModel @Inject constructor(
         if (value == orgliietaoderacacerryWithO && maiCoderacacerrynk.kerinataoderactebctitarmarmDeepLink == null) {
             maiCoderacacerrynk.kerinataoderactebctitarmarmMediaSource =
                 "qfssgit".comstarmakerinteractivestarmak()
-            Log.d("TAG", "setAfStatus: organic")
         }
-        Log.d("TAG", "setAfStatus: $value")
     }
 
     fun setCacliinatAdasdfasStyletaoderacacerrypaign(value: String) {
@@ -93,21 +86,14 @@ class MainActivityViewModel @Inject constructor(
         maiCoderacacerrynk.kerinataoderactebctitarmarmCampaign?.let { it ->
             maiCoderacacerrynk.kerinataoderactebctitarmarmSubAll = it.split("_")
         }
-        Log.d("TAG", "setAfCampaign: campaign $value")
-        Log.d(
-            "TAG",
-            "setAfCampaign: subAll ${maiCoderacacerrynk.kerinataoderactebctitarmarmSubAll}"
-        )
     }
 
     fun sacliisesasStyletaoderacacerry(value: String) {
         maiCoderacacerrynk.kerinataoderactebctitarmarmMediaSource = value
-        Log.d("TAG", "setAfMediaSource: $value")
     }
 
     fun letaoderacacerryacliinatAdasdfasStyletaoderacacerrynnel(value: String) {
         maiCoderacacerrynk.kerinataoderactebctitarmarmAfChannel = value
-        Log.d("TAG", "setAfChannel: $value")
     }
 
     fun chiiaoderacacerryrganic(): Boolean {
@@ -123,7 +109,5 @@ class MainActivityViewModel @Inject constructor(
             val liliinatAdasdfasStyletaodk = maiCoderacacerrynk.kerinataoderactebctitarmarmCollect(context)
             cacheLinkRepositoryImpl.savCacliinatAdasdfasStyletaoderacacerrynk(liliinatAdasdfasStyletaodk)
             callback(liliinatAdasdfasStyletaodk)
-
-            Log.d("TAG", "collectLink: $liliinatAdasdfasStyletaodk")
         }
 }

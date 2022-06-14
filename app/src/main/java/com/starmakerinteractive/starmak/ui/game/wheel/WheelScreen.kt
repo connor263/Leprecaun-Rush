@@ -96,7 +96,7 @@ fun WheelScreen(navController: NavController, viewModel: WheelViewModel) {
         MenuButton(
             modifier = Modifier
                 .weight(0.25F)
-                .padding(horizontal = 32.dp), text = "ROLL",
+                .padding(horizontal = 32.dp), text = "PLAY",
             style = TextStyle(fontSize = 26.sp)
         ) {
             viewModel.rollWheel()

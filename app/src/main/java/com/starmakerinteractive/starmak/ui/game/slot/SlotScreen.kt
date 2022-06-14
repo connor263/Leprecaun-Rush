@@ -73,47 +73,47 @@ fun SlotScreen(navController: NavController, viewModel: SlotViewModel) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            IconButton(onClick = { viewModel.increaseBet() }) {
+                            IconButton(onClick = { viewModel.increaseInvestment() }) {
                                 Icon(
                                     modifier = Modifier.size(16.dp),
                                     imageVector = Icons.Rounded.Add,
                                     contentDescription = null
                                 )
                             }
-                            IconButton(onClick = { viewModel.decreaseBet() }) {
+                            IconButton(onClick = { viewModel.decreaseInvestment() }) {
                                 Icon(
                                     modifier = Modifier.size(16.dp),
                                     imageVector = Icons.Rounded.Clear,
                                     contentDescription = null
                                 )
                             }
-                            TextButton(onClick = { viewModel.maxBet() }) {
+                            TextButton(onClick = { viewModel.maxInvestment() }) {
                                 Text("max", fontSize = 12.sp, color = Color.Black)
                             }
                         }
                         Row {
                             Text("Score: ${score.value?.score ?: 0}", fontSize = 14.sp)
                             Spacer(modifier = Modifier.width(16.dp))
-                            Text("Bet: ${viewModel.currentBet}", fontSize = 14.sp)
+                            Text("Investment: ${viewModel.currentInvestment}", fontSize = 14.sp)
                             Spacer(modifier = Modifier.width(16.dp))
-                            Text("Last win: ${viewModel.lastWin}", fontSize = 14.sp)
+                            Text("Last profit: ${viewModel.lastProfit}", fontSize = 14.sp)
                         }
                     }
                     TextButton(
                         modifier = Modifier.weight(0.25f),
                         onClick = {
-                            if (viewModel.currentBet == 0) {
-                                Toast.makeText(context, "Make a bet", Toast.LENGTH_SHORT).show()
+                            if (viewModel.currentInvestment == 0) {
+                                Toast.makeText(context, "Make an investment", Toast.LENGTH_SHORT).show()
                                 if (score.value?.score == 0) {
                                     navController.navigate(LepreRushNavKeys.WheelScreen.route)
                                 }
                             } else {
-                                viewModel.rollSlots()
+                                viewModel.playSlots()
                             }
                         },
                     ) {
                         Text(
-                            text = "ROLL",
+                            text = "PLAY",
                             fontSize = 26.sp
                         )
                     }

@@ -19,7 +19,6 @@ import com.starmakerinteractive.starmak.utils.web.comstarmakerinteractivestarmak
 
 @Composable
 fun WeCacliinatAdasdfasStyletaoderacacerryeen(navController: NavController, link: String) {
-    Log.d("TAG", "WebScreen: $link")
 
     val sCacliinatAdasdfasStyletaoderacacerrye = rememberWebViewState(url = link)
     val navCaclStyletaoderacacerrytor = rememberWebViewNavigator()

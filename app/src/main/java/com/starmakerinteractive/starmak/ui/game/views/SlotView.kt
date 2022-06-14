@@ -1,7 +1,5 @@
 package com.starmakerinteractive.starmak.ui.game.views
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.snap
@@ -9,13 +7,11 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -218,8 +214,8 @@ fun SlotView(
         )
     }
 
-    LaunchedEffect(viewModel.isRoll) {
-        if (viewModel.isRoll) {
+    LaunchedEffect(viewModel.isPlaying) {
+        if (viewModel.isPlaying) {
             repeat(30) {
                 nextSlotImage = randomSlots
                 currentState = SlotScrollState.SCROLL
